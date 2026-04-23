@@ -1,0 +1,15 @@
+{
+  "short_name": "NutriMed",
+  "name": "NutriMed AI: Clinical Nutrition",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/lucide-react/lucide/main/icons/apple.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4A5D4E",
+  "background_color": "#F5F5F4"
+}
