@@ -1417,7 +1417,7 @@ export default function App() {
                     <h3 className="text-2xl font-serif text-med-olive border-b border-med-olive/10 pb-2">{t.monthly}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {savedMonthlyPlans.map((plan, idx) => (
-                        <div key={idx} className="card-med p-6 flex justify-between items-center group hover:border-med-olive transition-all">
+                        <div key={`monthly-${plan.title}-${idx}`} className="card-med p-6 flex justify-between items-center group hover:border-med-olive transition-all">
                           <div 
                             className="cursor-pointer flex-1"
                             onClick={() => {
@@ -1446,7 +1446,7 @@ export default function App() {
                     <h3 className="text-2xl font-serif text-med-olive border-b border-med-olive/10 pb-2">{t.weekly}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {savedWeeklyPlans.map((plan, idx) => (
-                        <div key={idx} className="card-med p-6 flex justify-between items-center group hover:border-med-olive transition-all">
+                        <div key={`weekly-${plan.title}-${idx}`} className="card-med p-6 flex justify-between items-center group hover:border-med-olive transition-all">
                           <div 
                             className="cursor-pointer flex-1"
                             onClick={() => {
@@ -1503,7 +1503,7 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {history.length > 0 ? history.map((plan, idx) => (
                   <motion.div
-                    key={idx}
+                    key={`history-full-${plan.date}-${idx}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.05 }}
@@ -1576,7 +1576,7 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {history.slice(0, 4).map((plan, idx) => (
                   <button
-                    key={idx}
+                    key={`history-prev-${plan.date}-${idx}`}
                     onClick={() => {
                       setCurrentPlan(plan);
                       setViewMode('daily');
@@ -2272,7 +2272,7 @@ function DailyTable({ plan, t }: { plan: DailyMealPlan, t: any }) {
             </div>
           )}
           <ul className="text-[10px] list-disc list-inside text-stone-500">
-            {plan.breakfast.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}
+            {plan.breakfast.ingredients.map((ing, i) => <li key={`br-ing-${i}-${ing.substring(0,5)}`}>{ing}</li>)}
           </ul>
         </div>
         <div className="space-y-4">
@@ -2292,7 +2292,7 @@ function DailyTable({ plan, t }: { plan: DailyMealPlan, t: any }) {
             </div>
           )}
           <ul className="text-[10px] list-disc list-inside text-stone-500">
-            {plan.lunch.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}
+            {plan.lunch.ingredients.map((ing, i) => <li key={`lu-ing-${i}-${ing.substring(0,5)}`}>{ing}</li>)}
           </ul>
         </div>
         <div className="space-y-4">
@@ -2312,7 +2312,7 @@ function DailyTable({ plan, t }: { plan: DailyMealPlan, t: any }) {
             </div>
           )}
           <ul className="text-[10px] list-disc list-inside text-stone-500">
-            {plan.snack.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}
+            {plan.snack.ingredients.map((ing, i) => <li key={`sn-ing-${i}-${ing.substring(0,5)}`}>{ing}</li>)}
           </ul>
         </div>
         <div className="space-y-4">
@@ -2332,7 +2332,7 @@ function DailyTable({ plan, t }: { plan: DailyMealPlan, t: any }) {
             </div>
           )}
           <ul className="text-[10px] list-disc list-inside text-stone-500">
-            {plan.dinner.ingredients.map((ing, i) => <li key={i}>{ing}</li>)}
+            {plan.dinner.ingredients.map((ing, i) => <li key={`di-ing-${i}-${ing.substring(0,5)}`}>{ing}</li>)}
           </ul>
         </div>
       </div>

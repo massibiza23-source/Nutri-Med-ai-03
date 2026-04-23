@@ -1,7 +1,16 @@
 import { GoogleGenAI, Type, ThinkingLevel } from "@google/genai";
 import { UserProfile, DailyMealPlan, Language, Meal } from "../types";
 
-const apiKey = process.env.GEMINI_API_KEY || "";
+// Standard Vite way to access keys in Vercel is via import.meta.env, 
+// but we keep process.env for local AI Studio compatibility.
+const apiKey = (typeof process !== 'undefined' && process.env?.GEMINI_API_KEY) || 
+               (import.meta as any).env?.VITE_GEMINI_API_KEY || 
+               "";
+
+if (!apiKey) {
+  console.error("CRITICAL: GEMINI_API_KEY is not defined. Please set it in Vercel environment variables.");
+}
+
 const ai = new GoogleGenAI({ apiKey });
 
 const MODEL_NAME = "gemini-3-flash-preview";
